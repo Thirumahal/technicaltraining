@@ -1,0 +1,56 @@
+
+# ----------------------------------------
+# Set of sensible (default) parameters
+
+exp_params = dict()
+
+# Specify dataset
+exp_params['data_dir'] = '../Datasets/structural_damage_detection/Dataset A'
+exp_params['window_size'] = 160  # (window_size)
+exp_params['stride'] = exp_params['window_size']  # stride when preparing windows (decides window overlap)
+exp_params['feature_type'] = 'raw_window'     # Options: catch22, raw_window
+
+# Common parameters
+exp_params['dataset_percentage'] = 0.2    # Use only a portion of the full dataset for fast experimenting (train + test) (may not always be honoured)
+exp_params['ud_ratio'] = (50, 50)   # ratio of num_undamaged_samples to num_damaged_samples
+exp_params['test_set_size'] = 0.3   # Percentage of full set that goes into test set
+exp_params['scale_dataset'] = False  # True or False indicating whether to scale dataset
+
+exp_params['model'] = 'rf'     # Options: ann, lstm, svm, rf (Random Forest), lr (Logistic Regression), xgb (XGBoost)
+
+# ANN parameters
+exp_params['ann_layer_units'] = [10]
+exp_params['ann_layer_activations'] = ['relu', 'relu']
+exp_params['ann_layer_dropout_rates'] = [0.2, 0.2]
+exp_params['ann_batch_size'] = 64
+exp_params['ann_epochs'] = 1000
+exp_params['ann_early_stop_patience'] = -1  # Disabled
+exp_params['ann_class_weights'] = 0 # Weighting instances in objective function according to class proportion (to handle imbalance)
+
+# Random forest parameters
+exp_params['rf_num_trees'] = 100
+exp_params['rf_min_samples_for_split'] = 2
+
+# SVM parameters
+exp_params['svm_C'] = 1
+exp_params['svm_kernel'] = 'rbf'
+
+# Logistic Regression parameters
+exp_params['lr_penalty'] = 'l2' # regularization type: l1 or l2 (default: l2)
+exp_params['lr_C'] = 1.0    # inverse of regularization parameter (lambda). Smaller C will give stronger regularization
+exp_params['lr_epochs'] = 100   # max iterations to run optimizer
+
+# XGBoost parameters (see https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier)
+exp_params['xgb_max_depth'] = 3     # Maximum tree depth for base learners (default: 3)
+exp_params['xgb_learning_rate'] = 0.1       # Boosting learning rate (xgb’s “eta”)  (default: 0.1)
+exp_params['xgb_n_estimators'] = 100        # No. of base learners (default: 100)
+exp_params['xgb_alpha'] = 0     # L1 regularization term on weights (default: 0)
+exp_params['xgb_lambda'] = 1        # L2 regularization term on weights (default: 1)
+exp_params['xgb_gamma'] = 0.0       # Minimum loss reduction required to make a further partition on a leaf node of the tree (default: 0)
+
+# LSTM parameters
+exp_params['lstm_time_steps'] = exp_params['window_size']
+exp_params['lstm_input_nodes'] = 1
+exp_params['lstm_layer_units'] = [64, 32]
+exp_params['lstm_layer_activations'] = ['tanh', 'tanh']
+exp_params['lstm_layer_dropout_rates'] = [0.2, 0.2]

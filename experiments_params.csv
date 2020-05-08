@@ -1,0 +1,11 @@
+exp_id,data_dir,feature_type,window_size,ud_ratio,dataset_percentage,test_set_size,scale_dataset,model,rf_num_trees,rf_min_samples_for_split,ann_layer_units,ann_layer_activations,ann_layer_dropout_rates,ann_batch_size,ann_epochs,ann_early_stop_patience,ann_class_weights,lstm_layer_units,lstm_layer_activations,lstm_layer_dropout_rates,lstm_batch_size,lstm_epochs,lstm_early_stop_patience,svm_C,svm_kernel,lr_penalty,lr_C,lr_epochs,xgb_max_depth,xgb_learning_rate,xgb_n_estimators,xgb_alpha,xgb_lambda,xgb_gamma
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# Options for params,,catch22/ raw_window,,,"between [0.0, 1.0]","between [0.0, 1.0]",0 (False)/ 1 (True),ann/ lstm/ svm/ rf/ lr/ xgb,,,,,,,,To disable: -1,0 (False)/ 1 (True),,,,,,,,,,,,,,,,,
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# Following are some example experiment params,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#RF-example,../Datasets/structural_damage_detection/Dataset A,raw_window,160,"1,1",1,0.3,0,rf,100,2,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+ANN-example,../Datasets/structural_damage_detection/Dataset A,raw_window,160,"1,1",1,0.3,0,ann,-,-,"100,50","relu,relu","0.2,0.2",256,100,-1,0,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+#LSTM-example,../Datasets/structural_damage_detection/Dataset A,raw_window,160,"1,1",1,0.3,0,lstm,-,-,-,-,-,-,-,-,-,"10,5","relu,relu","0.2,0.2",256,1,-1,-,-,-,-,-,-,-,-,-,-,-
+#SVM-example,../Datasets/structural_damage_detection/Dataset A,raw_window,160,"1,1",1,0.3,0,svm,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,1,rbf,-,-,-,-,-,-,-,-,-
+#LR-example,../Datasets/structural_damage_detection/Dataset A,raw_window,160,"1,1",1,0.3,0,lr,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,l2,1,100,-,-,-,-,-,-
+#XGB-example,../Datasets/structural_damage_detection/Dataset A,raw_window,160,"1,1",1,0.3,0,xgb,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,3,0.1,100,0,1,0
